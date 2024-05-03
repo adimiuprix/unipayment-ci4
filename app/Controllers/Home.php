@@ -14,9 +14,9 @@ class Home extends BaseController
     public function createInvoice()
     {
         // Ganti dengan kredensial yang sesuai
-        $client_id = '03e56c38-3016-48da-9cf7-d7532aefab37';
-        $client_secret = '9dvP94EykB2zErzmHB7naAb8LxH4CLhou';
-        $app_id = '4e9a85e3-1ebb-4bad-b309-ae3525c41573';
+        $client_id = '9983cf6e-f1af-4fb2-8f05-01918fe72cd5';
+        $client_secret = '7Tr7fjfZKp2QTBroL2CvkytBEaqVyaAHW';
+        $app_id = '79226fc8-6c07-4137-9ab3-fc442b7a5af9';
 
         // Persiapkan data untuk membuat faktur
         $createInvoiceRequest = new CreateInvoiceRequest();
@@ -47,13 +47,9 @@ class Home extends BaseController
     public function handleIPN()
     {
         $content = file_get_contents("php://input");
+        $json_data = json_encode($content, JSON_PRETTY_PRINT);
+
         $filename = WRITEPATH . 'input_data.json';
-
-        $data = [
-            "input_data" => $content
-        ];
-
-        $json_data = json_encode($data, JSON_PRETTY_PRINT);
 
         file_put_contents($filename, $json_data);
     }
